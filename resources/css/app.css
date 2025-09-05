@@ -1,0 +1,146 @@
+/* --- Force BI font paths (absolute) --- */
+
+
+:root{
+  --brand:#2563eb; /* biru */
+  --brand2:#60a5fa; /* biru muda */
+  --ink:#0f172a;
+}
+
+body{
+  min-height:100vh;
+  background:
+    radial-gradient(1000px 600px at -10% -10%, rgba(96,165,250,.18), transparent 60%),
+    radial-gradient(900px 540px at 110% 90%, rgba(37,99,235,.12), transparent 60%),
+    linear-gradient(180deg, #f7fbff, #ffffff);
+  color:var(--ink);
+  overflow-x:hidden;
+}
+
+.navbar-brand{ font-weight:700; letter-spacing:.3px; }
+
+.brand-gradient{
+  background: linear-gradient(135deg, var(--brand), var(--brand2));
+  color:#fff;
+}
+
+.card-lite{
+  background:#ffffffcc;
+  backdrop-filter: blur(6px);
+  border:1px solid rgba(37,99,235,.15);
+  border-radius:16px;
+}
+
+.btn-brand{
+  background:linear-gradient(135deg, var(--brand), var(--brand2));
+  color:#fff; border:0;
+}
+.btn-brand:hover{ opacity:.92; color:#fff; }
+
+
+/* === Sidebar === */
+.app-shell{
+  display:flex;
+  min-height: calc(100vh - 56px); /* 56px kira-kira tinggi navbar */
+}
+.sidebar{
+  position: sticky; top:0;
+  height: calc(100vh - 56px);
+  width: 260px;
+  background: #ffffffee;
+  backdrop-filter: blur(6px);
+  border-right: 1px solid rgba(37,99,235,.12);
+  transition: transform .25s ease, width .25s ease, box-shadow .25s ease;
+  z-index: 1020;
+}
+.sidebar .sidebar-inner{ padding:12px; }
+.sidebar .sidebar-brand{
+  font-weight:700; font-size:18px; margin:6px 8px 10px 8px;
+}
+.sidebar .nav .nav-link{
+  display:flex; align-items:center; gap:10px;
+  padding:10px 12px; border-radius:12px; color:#0f172a;
+  transition: background .2s ease, transform .12s ease, color .2s ease;
+}
+.sidebar .nav .nav-link i{ font-size:18px; width:22px; text-align:center; }
+.sidebar .nav .nav-link .lbl{ white-space:nowrap; }
+.sidebar .nav .nav-link:hover{
+  background: rgba(96,165,250,.18);
+  transform: translateX(2px);
+}
+.sidebar .nav .nav-link.active{
+  background: linear-gradient(135deg, var(--brand), var(--brand2));
+  color:#fff;
+  box-shadow: 0 6px 16px rgba(37,99,235,.25);
+}
+.sidebar .nav-section{
+  font-size:12px; color:#6b7280; padding:6px 10px; text-transform:uppercase;
+  letter-spacing:.4px;
+}
+
+/* Main */
+.app-main{
+  flex:1; min-width:0;
+  transition: margin-left .25s ease;
+}
+
+/* Mobile: sidebar hidden by default (slide off-canvas) */
+@media (max-width: 991.98px){
+  .sidebar{
+    position: fixed; left:0; top:56px; height: calc(100vh - 56px);
+    transform: translateX(-100%);
+  }
+  .sidebar.show{ transform: translateX(0); box-shadow: 0 20px 40px rgba(0,0,0,.18); }
+}
+
+/* Desktop collapse (icons only) */
+@media (min-width: 992px){
+  .sidebar.collapsed{ width: 76px; }
+  .sidebar.collapsed .lbl{ display:none; }
+}
+
+/* Nice hover ripple (optional) */
+.sidebar .nav .nav-link{ position:relative; overflow:hidden; }
+.sidebar .nav .nav-link::after{
+  content:""; position:absolute; inset:auto 0 0 0; height:0; background: rgba(96,165,250,.25);
+  transition: height .2s ease;
+}
+.sidebar .nav .nav-link:hover::after{ height:3px; }
+/* Desktop: main ikut melebar ketika sidebar collapsed */
+@media (min-width: 992px){
+  #appMain{ margin-left: 260px; transition: margin-left .25s ease; }
+  #appMain.sidebar-collapsed{ margin-left: 76px; }
+}
+@media (max-width: 991.98px){
+  #appMain{ margin-left: 0 !important; } /* mobile full */
+}
+
+  .pagination {
+    --bs-pagination-color: var(--brand);
+    --bs-pagination-border-color: rgba(37,99,235,.15);
+    --bs-pagination-hover-color: var(--brand2);
+    --bs-pagination-hover-bg: rgba(37,99,235,.08);
+    --bs-pagination-hover-border-color: rgba(37,99,235,.25);
+    --bs-pagination-active-color: #fff;
+    --bs-pagination-active-bg: linear-gradient(135deg, var(--brand), var(--brand2));
+    --bs-pagination-active-border-color: rgba(37,99,235,.4);
+  }
+
+  .page-link {
+    font-size: .85rem;            /* lebih kecil */
+    padding: .25rem .6rem;        /* tinggi rendah */
+    border-radius: 6px !important;
+    margin: 0 2px;
+    line-height: 1.3;
+    transition: all .2s ease;
+  }
+
+  .page-item.active .page-link {
+    color: #fff !important;
+    box-shadow: 0 3px 8px rgba(37,99,235,.25);
+  }
+
+  .page-link:focus {
+    box-shadow: 0 0 0 .16rem rgba(37,99,235,.25);
+  }
+
